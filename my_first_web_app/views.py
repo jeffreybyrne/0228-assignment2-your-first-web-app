@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from random import randint
 
@@ -34,3 +34,11 @@ def favourites_page(request):
     context = {'fave_links': fave_links}
     response = render(request, 'favourites.html', context)
     return HttpResponse(response)
+
+
+def root(request):
+    return HttpResponseRedirect('home/')
+
+
+def gallery_page(request):
+    return HttpResponseRedirect('../portfolio/')
