@@ -20,6 +20,7 @@ from django.shortcuts import render
 from random import randint
 # import ipdb
 
+
 def home_page(request):
     context = {'name': 'Jeff'}
     response = render(request, 'index.html', context)
@@ -28,7 +29,7 @@ def home_page(request):
 
 def portfolio_page(request):
     image_urls = []
-    for num in range(2):
+    for num in range(5):
         rand_number = randint(0, 100)
         image_urls.append("https://picsum.photos/400/600/?image={}".format(rand_number))
         # ipdb.set_trace()
@@ -38,7 +39,16 @@ def portfolio_page(request):
     return HttpResponse(response)
 
 
+def about_me_page(request):
+    my_skills = ['coding', 'being awesome', 'learning new shit']
+    my_interests = ['not being bored', 'running', 'video games']
+    context = {'skills': my_skills, 'interests': my_interests}
+    response = render(request, 'about_me.html', context)
+    return HttpResponse(response)
+
+
 urlpatterns = [
     path('home/', home_page),
-    path('portfolio/', portfolio_page)
+    path('portfolio/', portfolio_page),
+    path('about_me/', about_me_page)
 ]
