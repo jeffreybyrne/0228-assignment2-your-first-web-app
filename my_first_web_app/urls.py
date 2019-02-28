@@ -18,7 +18,7 @@ from django.urls import path
 from django.http import HttpResponse
 from django.shortcuts import render
 from random import randint
-
+# import ipdb
 
 def home_page(request):
     context = {'name': 'Jeff'}
@@ -27,10 +27,14 @@ def home_page(request):
 
 
 def portfolio_page(request):
-    rand_number = randint(0, 100)
-    image_url = "https://picsum.photos/400/600/?image={}".format(rand_number)
-    context = {'gallery': image_url}
+    image_urls = []
+    for num in range(2):
+        rand_number = randint(0, 100)
+        image_urls.append("https://picsum.photos/400/600/?image={}".format(rand_number))
+        # ipdb.set_trace()
+    context = {'gallery_images': image_urls}
     response = render(request, 'gallery.html', context)
+    # ipdb.set_trace()
     return HttpResponse(response)
 
 
