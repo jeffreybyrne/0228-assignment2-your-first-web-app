@@ -18,11 +18,18 @@ from django.urls import path
 from django.http import HttpResponse
 from django.shortcuts import render
 
+
 def home_page(request):
     response = render(request, 'index.html')
     return HttpResponse(response)
-    # return HttpResponse('<h1>Hi</h1><p>this is the home page</p>')
+
+
+def portfolio_page(request):
+    response = render(request, 'gallery.html')
+    return HttpResponse(response)
+
 
 urlpatterns = [
-    path('home/', home_page)
+    path('home/', home_page),
+    path('portfolio/', portfolio_page)
 ]
