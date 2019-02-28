@@ -1,2 +1,2 @@
 *.db
-*__pycache__/*
+my_first_web_app/__pycache__/*
